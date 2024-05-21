@@ -13,7 +13,7 @@
       {{ numberOfCorrectAnswers }} / {{ quizQuestionLength }}
     </h2>
     <div v-if="quizInfo" class="buttonContainer">
-      <button @click="reloadPage">Play again</button>
+      <button @click="reloadPage">Try again</button>
     </div>
   </div>
 </template>

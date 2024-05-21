@@ -18,7 +18,13 @@ import { ref, watch } from 'vue';
       <input v-model.trim="search" type="text" placeholder="Search...">
     </header>
     <div class="options-container">
-      <Card v-for="quiz in quizzesData" :key="quiz.id" :quizInfo="quiz"/>
+      <TransitionGroup name="card" appear>
+        <Card 
+          v-for="quiz in quizzesData" 
+          :key="quiz.id" 
+          :quizInfo="quiz"
+        />
+      </TransitionGroup>
     </div>
   </div>
 </template>
@@ -47,5 +53,34 @@ import { ref, watch } from 'vue';
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
+  }
+
+  /* CARD */
+
+  .card-enter-from{
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  .card-enter-to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card-leave-from{
+    opacity: 1;
+    transform: translateY(0);   
+  }
+
+  .card-leave-to{
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  .card-enter-active, .card-leave-active{
+    transition: all 0.4s ease;
+  }
+
+  .card-move{
+    transition: transform 0.4s ease;
   }
 </style>
